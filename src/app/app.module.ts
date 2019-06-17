@@ -5,10 +5,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HelloComponent } from './hello.component';
+import { EnPagesComponentComponent } from './en-pages-component/en-pages-component.component';
+
+import appRoutes from './routerConfig';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, RouterModule ],
-  declarations: [ AppComponent, HelloComponent ],
+  imports:      [ BrowserModule, FormsModule,  RouterModule.forRoot(appRoutes) ],
+  declarations: [ AppComponent, HelloComponent, EnPagesComponentComponent ],
   bootstrap:    [ AppComponent ]
 })
 export class AppModule { }
