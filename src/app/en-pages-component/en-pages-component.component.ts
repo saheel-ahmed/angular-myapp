@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-en-pages-component',
@@ -10,12 +10,19 @@ export class EnPagesComponentComponent implements OnInit {
 
   pagename = 'Home';
 
-  constructor(private route: ActivatedRoute) { }
+  pages : string[] = [ 'home', 'about', 'services' ];
+
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => { 
-      this.pagename = params['page'];
+      if(this.pages.includes(params['page'])){
+        this.pagename = params['page'];
+      }else{
+        this.router.navigate(['page/en/404']);
+      }      
     });
   }
+  
 
 }
