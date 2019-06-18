@@ -10,7 +10,7 @@ export class EnPagesComponentComponent implements OnInit {
 
   pagename = 'Home';
 
-  pages : string[] = [ 'home', 'about', 'services' ];
+  pages : string[] = [ 'home', 'about-us', 'our-services', 'awareness', 'news', 'events'];
 
   constructor(private route: ActivatedRoute, private router: Router) { }
 

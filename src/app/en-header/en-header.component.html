@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" *ngFor="let m1 of resData.en.menus[0].links">
+        <a class="nav-link" [routerLink]="m1.link" >{{m1.name}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">SPSA</a>
+  <button class="navbar-toggler" type="button" (click)="openMenu();">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" [ngClass]="{'show': menuOpen == true }">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item" [ngClass]="{'show': m1.isOpen == true, 'dropdown': m1.sublinks.length > 0}" routerLinkActive="active" *ngFor="let m1 of resData.en.menus[1].links; let i = index">
+        <a class="nav-link" *ngIf="m1.sublinks.length == 0" [routerLink]="m1.link" >{{m1.name}}</a>
+
+        <a class="nav-link dropdown-toggle" (click)="toggleMenu($event,m1);" 
+          *ngIf="m1.sublinks.length > 0" [routerLink]="m1.link"
+        >{{m1.name}}</a>
+        <div class="dropdown-menu" [ngClass]="{'show': m1.isOpen == true}">
+          <a class="dropdown-item" [routerLink]="sm1.link" *ngFor="let sm1 of m1.sublinks">{{sm1.name}}</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
