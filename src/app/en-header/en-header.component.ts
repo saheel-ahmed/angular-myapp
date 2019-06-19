@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CmsPageService } from './../services/cms-page.service';
+
 
 @Component({
   selector: 'app-en-header',
@@ -8,42 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class EnHeaderComponent implements OnInit {
 
 
-  resData : object = {
-    en: {
-      menus: [
-        { 
-          name: "menu1", 
-          links: [ 
-            { name: 'FAQs', link: 'en/faqs', sublinks: [] },
-            { name: 'Career', link: 'en/career', sublinks: [] },
-            { name: 'Volunteers', link: 'en/volunteers', sublinks: [] },
-            { name: 'Contact', link: 'en/contact', sublinks: [] }
-          ] 
-        },
-        { 
-          name: "menu2", 
-          links: [ 
-            { name: 'Home', link: 'en/home', sublinks: [] },
-            { name: 'About Us', link: 'en/about-us', sublinks: [] },
-            { name: 'Our Services', link: 'en/our-services', sublinks: [ 
-                                      { name: 'Service 1', link: 'en/our-services/service1' },
-                                      { name: 'Service 2', link: 'en/our-services/service2' } 																		
-                                    ] },
-            { name: 'Awareness', link: 'en/awareness', sublinks: [ 
-                                      { name: 'Awareness 1', link: 'en/awareness/awarenes1' },
-                                      { name: 'Awareness 2', link: 'en/awareness/awarenes2' } 																		
-                                    ] },
-            { name: 'News', link: 'en/news', sublinks: [] },
-            { name: 'Events', link: 'en/events', sublinks: [] },
-          ] 
-        }
-      ]
-    }
-  };
+  cmsPageResponse : any;
 
   menuOpen : boolean = false;
 
-  constructor() { }
+  constructor(private cmsPageService :CmsPageService) {
+    this.cmsPageResponse = cmsPageService.cmsPageResponse;
+  }
 
   ngOnInit() {
   }
@@ -51,7 +24,7 @@ export class EnHeaderComponent implements OnInit {
   toggleMenu($event, m1){
     $event.stopPropagation(); // Only seems to
     $event.preventDefault(); // work with both
-    for(let m of this.resData.en.menus){
+    for(let m of this.cmsPageResponse.en.menus){
       for(let ml of m.links){
         if(ml.sublinks.length > 0){
            if(m1.name == ml.name){

@@ -14,11 +14,12 @@ import { EnHeaderComponent } from './en-header/en-header.component';
 import { FaqitemDirective } from './faqitem.directive';
 import { SafeHtmlPipe } from './safe-html.pipe';
 import { CmsPageService } from './services/cms-page.service';
+import { EnPagesComponent } from './en-pages/en-pages.component';
 
 
 @NgModule({
   imports:      [ BrowserModule, FormsModule,  RouterModule.forRoot(appRoutes) ],
-  declarations: [ AppComponent, HelloComponent, EnPagesComponentComponent, EnPageNotFoundComponent, EnHeaderComponent, FaqitemDirective, SafeHtmlPipe ],
+  declarations: [ AppComponent, HelloComponent, EnPagesComponentComponent, EnPageNotFoundComponent, EnHeaderComponent, FaqitemDirective, SafeHtmlPipe, EnPagesComponent ],
   bootstrap:    [ AppComponent ],
   providers: [CmsPageService]
 })
