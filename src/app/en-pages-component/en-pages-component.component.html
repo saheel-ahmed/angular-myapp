@@ -3,3 +3,8 @@ en-pages-component works!
 <br />
 Page name: {{pagename}}
 </p>
+<p>
+  {{dynamicValue}}
+</p>  
+<div id="warpper" [innerHTML]="pageContent | safeHtml">
+</div>  
