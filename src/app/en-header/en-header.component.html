@@ -22,7 +22,7 @@
   <div class="collapse navbar-collapse" [ngClass]="{'show': menuOpen == true }">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" [ngClass]="{'show': m1.isOpen == true, 'dropdown': m1.sublinks.length > 0}" routerLinkActive="active" *ngFor="let m1 of resData.en.menus[1].links; let i = index">
-        <a class="nav-link" *ngIf="m1.sublinks.length == 0" [routerLink]="m1.link" >{{m1.name}}</a>
+        <a class="nav-link" *ngIf="m1.sublinks.length == 0" [routerLink]="m1.link" (click)="toggleMenu($event,m1);">{{m1.name}}</a>
 
         <a class="nav-link dropdown-toggle" (click)="toggleMenu($event,m1);" 
           *ngIf="m1.sublinks.length > 0" [routerLink]="m1.link"

@@ -53,14 +53,20 @@ export class EnHeaderComponent implements OnInit {
     $event.preventDefault(); // work with both
     for(let m of this.resData.en.menus){
       for(let ml of m.links){
-        if(m1.name == ml.name){
-          if(ml.isOpen)
+        if(ml.sublinks.length > 0){
+           if(m1.name == ml.name){
+            if(ml.isOpen)
+              ml['isOpen'] = false;
+            else
+              ml['isOpen'] = true;
+          } 
+          else{          
             ml['isOpen'] = false;
-          else
-            ml['isOpen'] = true;
-        }          
-        else
+          }
+        }                
+        else{          
           ml['isOpen'] = false;
+        }
       }
     }
   }
