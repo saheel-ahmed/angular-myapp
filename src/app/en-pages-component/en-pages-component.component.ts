@@ -19,7 +19,10 @@ export class EnPagesComponentComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router,
   private elRef: ElementRef, private renderer: Renderer2) {
-    this.pageContent = "<ul id=\"faq1\" class=\"faqs\"> <li id=\"faq-item1\" class=\"faq-item\">Item 1</li> <li id=\"faq-item2\" class=\"faq-item\">Item 2</li> </ul>";
+
+    this.pageContent = "<ul id=\"faq1\" class=\"faqs\"> <li id=\"faq-item1\" class=\"faq-item\">Item 1</li> <li id=\"faq-item2\" class=\"faq-item\">Item 2</li> </ul> <hr /><ul id=\"faq2\" class=\"faq2\"> <li id=\"faq2-item1\" class=\"faq2-item\">Item 1</li> <li id=\"faq2-item2\" class=\"faq2-item\">Item 2</li> </ul>";
+
+
   }
 
   ngOnInit() {
@@ -37,8 +40,6 @@ export class EnPagesComponentComponent implements OnInit {
       if(document.getElementsByClassName('faqs')){
         let allContent = this.elRef.nativeElement.querySelector('.faqs');
         let parentContainer = this.elRef.nativeElement.querySelector('#warpper');
-        this.renderer.appendChild(parentContainer, allContent);
-        this.renderer.removeStyle(allContent, "display");
         let clickButtons = this.elRef.nativeElement.querySelectorAll('.faq-item');
         for(var i = 0; i < clickButtons.length; i++){
            this.renderer.listen(clickButtons[i], 'click', function($event){
@@ -48,12 +49,22 @@ export class EnPagesComponentComponent implements OnInit {
            });
         };
       }
+
+      //method 2
+      let faq2Items = this.elRef.nativeElement.querySelectorAll(".faq2-item");
+      for (let faq2Item of faq2Items) {
+          faq2Item.addEventListener('click', function($event){
+            console.log("I'm 2 called.... Yahoo!");
+            self.functionToCall($event);
+          });
+      }     
    }
+
    ngOnDestroy() {
      this.renderer.destroy();
    }
   
-   public functionToCall($event){
+   functionToCall($event){
      console.log('Event:', $event);
      this.dynamicValue = "Finally done, " + (new Date()).toLocaleString();
    }
