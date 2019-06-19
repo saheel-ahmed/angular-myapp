@@ -1,37 +1,47 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+<header class="header header-transparent">
+	<!--Topbar-->
+	<div class="navbar-top">
+		<div class="container">
+			<div class="navbar-nav align-items-center">
+				<div class="ml-auto">
+					<ul class="nav">
+						<li class="nav-item" routerLinkActive="active" *ngFor="let m1 of cmsPageResponse.en.menus[0].links">
+							<a class="nav-link" [routerLink]="m1.link">{{m1.name}}</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">العربية</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--Main navbar-->
+	<nav class="navbar navbar-main navbar-expand-lg navbar-transparent">
+		<div class="container px-lg-0">
+			<a class="navbar-brand mr-lg-5" href="#">
+				<img alt="Image placeholder" src="https://i.ibb.co/VwX9w5j/logo.png" id="navbar-logo" style="height: 70px;">
+               </a>
+               
+               <button class="navbar-toggler" type="button" (click)="openMenu();">
+                <span class="navbar-toggler-icon"></span>
+              </button>
 
-  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active" *ngFor="let m1 of cmsPageResponse.en.menus[0].links">
-        <a class="nav-link" [routerLink]="m1.link" >{{m1.name}}</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+              <div class="collapse navbar-collapse" [ngClass]="{'show': menuOpen == true }">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item" [ngClass]="{'show': m1.isOpen == true, 'dropdown': m1.sublinks.length > 0}" routerLinkActive="active" *ngFor="let m1 of cmsPageResponse.en.menus[1].links; let i = index">
+                    <a class="nav-link" *ngIf="m1.sublinks.length == 0" [routerLink]="m1.link" (click)="toggleMenu($event,m1);">{{m1.name}}</a>
 
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">SPSA</a>
-  <button class="navbar-toggler" type="button" (click)="openMenu();">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" [ngClass]="{'show': menuOpen == true }">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [ngClass]="{'show': m1.isOpen == true, 'dropdown': m1.sublinks.length > 0}" routerLinkActive="active" *ngFor="let m1 of cmsPageResponse.en.menus[1].links; let i = index">
-        <a class="nav-link" *ngIf="m1.sublinks.length == 0" [routerLink]="m1.link" (click)="toggleMenu($event,m1);">{{m1.name}}</a>
-
-        <a class="nav-link dropdown-toggle" (click)="toggleMenu($event,m1);" 
-          *ngIf="m1.sublinks.length > 0" [routerLink]="m1.link"
-        >{{m1.name}}</a>
-        <div class="dropdown-menu" [ngClass]="{'show': m1.isOpen == true}">
-          <a class="dropdown-item" [routerLink]="sm1.link" *ngFor="let sm1 of m1.sublinks">{{sm1.name}}</a>
-        </div>
-      </li>
-    </ul>
-  </div>
-</nav>
-
+                    <a class="nav-link dropdown-toggle" (click)="toggleMenu($event,m1);" 
+                      *ngIf="m1.sublinks.length > 0" [routerLink]="m1.link"
+                    >{{m1.name}}</a>
+                    <div class="dropdown-menu" [ngClass]="{'show': m1.isOpen == true}">
+                      <a class="dropdown-item" [routerLink]="sm1.link" *ngFor="let sm1 of m1.sublinks">{{sm1.name}}</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+               
+            </div>
+         </nav>
+      </header>
