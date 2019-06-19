@@ -1,0 +1,108 @@
+body{
+    color: #297FCA !important;
+}
+  .br-1{
+    border-radius: .25rem;
+  }
+
+  /* Slider*/
+
+  #slider{
+    height: 500px;
+    position: relative;
+  }
+
+  .carousel, .carousel-inner, .carousel-item{
+      height: 100%;
+  }
+  
+  .Carousel {
+    /* position: absolute; */
+    width: 100%;
+    height: 100%;
+    background: blue;
+    overflow: hidden;
+  }
+  .Carousel .Carousel-Slide {
+    left: 0;
+    position: relative;
+    background: grey;
+    height: 100%;
+    transition: left 1s linear;
+  }
+  .Carousel .Carousel-Slide .Carousel-Slide-item {
+    float: left;
+    height: 100%;
+    position: relative;
+    width: 100%;
+  }
+  .Carousel-Controller,
+  .Carousel-Controller-Nav {
+    box-sizing: border-box;
+    height: auto;
+    left: 0;
+    width: 100%;
+    padding: 0 20px;
+    position: absolute;
+    top: 50%;
+  }
+  .Carousel-Controller .Carousel-Controller-Nav-right,
+  .Carousel-Controller-Nav .Carousel-Controller-Nav-right {
+    float: right;
+  }
+  [class^=Carousel-Controller-Nav-] {
+    color: white;
+    cursor: pointer;
+    width: auto;
+    float: left;
+    font-size: 30px;
+    height: 100%;
+  }
+  [class^=Carousel-Controller-Nav-]:hover {
+    color: #000;
+  }
+  
+
+   .carousel-caption{
+      color: #297FCA;
+      display: flex !important;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100%;
+      left: none !important;
+      right: none !important;
+      bottom: none !important;
+  }
+
+  .carousel-item{
+    background: #E4F1FD;
+  }
+
+  .carousel-item-inner{
+      max-width: 400px;
+  }
+
+  .icon-chevron-sign-right{
+    background-image: url('https://i.ibb.co/kSqY1ZB/right-arrow.png');
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .icon-chevron-sign-left{
+    background-image: url('https://i.ibb.co/tYvvLLg/left-arrow.png');
+    width: 40px;
+    height: 40px;
+    display: block;
+    background-position: center;
+    background-size: cover;
+  }
+
+  /* Footer */
+
+  .footer{
+      background: #E4F1FD;
+  }
