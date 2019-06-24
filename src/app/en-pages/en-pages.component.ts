@@ -49,9 +49,12 @@ export class EnPagesComponent implements OnInit {
         this.router.navigate(['page/en/404']);
       }      
     });
+
+    console.log('called: ngOnInit');
   }
 
   ngAfterViewInit() {
+    console.log('called: ngAfterViewInit');
     let self = this;
 
     // transitionend event stuff
@@ -136,7 +139,7 @@ carousels.forEach(function(elem) {
         if (transitionEvent == 'NO_TRANSITION_EVENT')
             elem.dispatchEvent(transEvent);
     }
-});
+  });
 
 
   }
