@@ -4,6 +4,13 @@ body{
   .br-1{
     border-radius: .25rem;
   }
+  .card{
+    border: 1px solid #84c2fb;
+  }
+  
+  .card-header{
+    background: transparent;
+  }
 
   /* Slider*/
 
