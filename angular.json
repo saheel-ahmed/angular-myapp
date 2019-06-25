@@ -27,7 +27,7 @@
             ],
             "scripts": [
               "src/assets/js/bootstrap-native-v4.js"
-              ]
+            ]
           },
           "configurations": {
             "production": {

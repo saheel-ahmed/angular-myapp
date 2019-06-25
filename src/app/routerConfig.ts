@@ -4,7 +4,11 @@ import { EnPageNotFoundComponent } from './en-page-not-found/en-page-not-found.c
 import { EnPagesComponent } from './en-pages/en-pages.component';
 
 const appRoutes: Routes = [
-  
+  {
+    path: '',
+    redirectTo: 'en/home',
+    pathMatch: 'full',
+  },
   { path: 'en/:page', 
     component: EnPagesComponent 
   },
